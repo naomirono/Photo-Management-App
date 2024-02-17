@@ -5,7 +5,16 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'fira': ['Fira Sans'],
+        'inter': ['Inter'],
+      },
+      fontWeight: {
+        semibold: '600',
+        regular: '400',
+      },
+    },
   },
   plugins: [],
 }
