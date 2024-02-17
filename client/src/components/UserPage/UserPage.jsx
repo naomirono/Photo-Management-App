@@ -26,22 +26,31 @@ const UserPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`)
-      .then(response => setUser(response.data))
-      .catch(error => console.error('Error fetching user:', error))
-      .finally(() => setLoading(false));
+    const fetchData = async () => {
+      try {
+        const userResponse = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
+        setUser(userResponse.data);
+      
+        const albumsResponse = await axios.get(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`);
+        setAlbums(albumsResponse.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+       finally {
+        setLoading(false);
+      }
+    };
 
-    axios.get(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`)
-      .then(response => setAlbums(response.data))
-      .catch(error => console.error('Error fetching albums:', error));
+    fetchData();
   }, [userId]);
 
-  if (loading) {
+  if (loading || !user || albums.length === 0) {
     return <Loader />;
   }
+   
 
   return (
-      <div className="relative flex justify-center items-center w-full bg-cover bg-center h-full" style={{ backgroundImage: 'url("https://neyoportfolio.s3.eu-north-1.amazonaws.com/joanna-kosinska-spAkZnUleVw-unsplash.jpg")', position: 'relative' }}>
+      <div className="relative flex justify-center items-center w-full bg-cover bg-center h-full" style={{ backgroundImage: 'url("https://neyoportfolio.s3.eu-north-1.amazonaws.com/joanna-kosinska-spAkZnUleVw-unsplash.jpg")', position: 'relative', alt: 'Background Image' }}>
 
         <div className="absolute inset-0 bg-black bg-opacity-80"></div>
 
