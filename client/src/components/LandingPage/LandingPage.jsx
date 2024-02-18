@@ -53,16 +53,22 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="flex h-screen bg-white">
-      <div className="hidden relative sm:flex justify-center items-center flex-1 w-full bg-cover bg-center h-screen" style={{ backgroundImage: 'url("https://neyoportfolio.s3.eu-north-1.amazonaws.com/joanna-kosinska-spAkZnUleVw-unsplash.jpg")', position: 'relative' }}>
-       
-        <div className="absolute inset-0 bg-black bg-opacity-80"></div>
+    <div className="flex flex-col sm:flex-row h-screen bg-white">
 
-        <div className=" max-w-2xl mx-auto text-center relative z-10">
-        <h1 className="text-5xl font-fira font-semibold text-white mb-5">Welcome to <span className="text-[var(--primary)]">Photo App</span></h1>
-        <p className="text-gray-200 mb-6 font-inter text-lg">
-        Immerse yourself in a visual journey within our app. Explore user profiles, discover their unique albums, and dive into captivating photo collections.
-        </p>
+      <div className="relative flex justify-center items-center w-full sm:w-1/2 bg-cover bg-center h-screen" style={{ 
+        backgroundImage: 'url("https://neyoportfolio.s3.eu-north-1.amazonaws.com/joanna-kosinska-spAkZnUleVw-unsplash.jpg")', 
+        position: 'relative' 
+      }}>
+        <div className="absolute inset-0 bg-black bg-opacity-80"></div>
+        <div className="max-w-2xl mx-auto text-center relative z-10 mt-5 sm:mt-0">
+          <div className="flex flex-col items-center">
+            <h1 className="text-5xl font-fira font-semibold text-white mb-6 sm:mt-8">
+              Welcome to <span className="text-[var(--primary)]">Photo App</span>
+            </h1>
+            <p className="text-gray-200 mb-6 font-inter text-lg">
+              Immerse yourself in a visual journey within our app. Explore user profiles, discover their unique albums, and dive into captivating photo collections.
+            </p>
+          </div>
         </div>
       </div>
 
