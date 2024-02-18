@@ -7,10 +7,6 @@ import HomePage from './HomePage';
 jest.mock('axios');
 
 describe('HomePage Component', () => {
-  beforeEach(() => {
-    localStorage.clear();
-  });
-
   test('renders users', async () => {
     const mockUsersData = [
       { id: 1, name: 'John Doe', email: 'john@example.com', username: 'johndoe' },
@@ -33,5 +29,4 @@ describe('HomePage Component', () => {
       expect(screen.getByText('John Doe')).toBeInTheDocument();
     });
   });
-
 });
