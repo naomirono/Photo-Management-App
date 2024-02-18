@@ -3,22 +3,14 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const HomePage = () => {
-  const [users, setUsers] = useState(() => {
-    const storedUsers = localStorage.getItem('users');
-    return storedUsers ? JSON.parse(storedUsers) : [];
-  });
-
-  const [albums, setAlbums] = useState(() => {
-    const storedAlbums = localStorage.getItem('albums');
-    return storedAlbums ? JSON.parse(storedAlbums) : [];
-  });
+  const [users, setUsers] = useState([]);
+  const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
     if (!users.length) {
       axios.get('https://jsonplaceholder.typicode.com/users')
         .then(response => {
           setUsers(response.data);
-          localStorage.setItem('users', JSON.stringify(response.data));
         })
         .catch(error => console.error('Error fetching users:', error));
     }
@@ -27,7 +19,6 @@ const HomePage = () => {
       axios.get('https://jsonplaceholder.typicode.com/albums')
         .then(response => {
           setAlbums(response.data);
-          localStorage.setItem('albums', JSON.stringify(response.data));
         })
         .catch(error => console.error('Error fetching albums:', error));
     }

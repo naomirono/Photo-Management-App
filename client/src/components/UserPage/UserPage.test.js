@@ -5,15 +5,11 @@ import axios from 'axios';
 import UserPage from './UserPage';
 
 jest.mock('axios');
-jest.mock('../Loader/Loader', () => {
-  return {
-    __esModule: true,
-    default: jest.fn(() => null),
-    createPortal: jest.fn((children, container) => {
-      return children;
-    }),
-  };
-});
+jest.mock('../Loader/Loader', () => ({
+  __esModule: true,
+  default: jest.fn(() => null),
+  createPortal: jest.fn((children) => children),
+}));
 
 describe('UserPage Component', () => {
   test('renders user information', async () => {
