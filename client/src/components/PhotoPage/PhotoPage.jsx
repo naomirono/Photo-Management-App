@@ -71,28 +71,33 @@ const PhotoPage = () => {
 
           <div className="bg-[#FFFFFF] border-1 border-[#E0E0E0] p-4 rounded-lg shadow">
             <img src={photo.url} alt={`Photo ${photo.id}`} className="mb-3 w-full h-[60vh] rounded-md object-cover" />
-            <div className="flex items-center justify-between">
-              <p className='font-inter text-gray-900'><span className='font-fira font-medium text-[var(--secondary)]'>Title:</span> {editedTitle || photo.title}</p>
-              {isEditing ? (
-                <div className="flex items-center">
-                  <input
-                    type="text"
-                    value={editedTitle}
-                    onChange={(e) => setEditedTitle(e.target.value)}
-                    className="border p-2 mr-2"
-                  />
-                  <button onClick={handleTitleEdit} className="bg-[var(--primary)] text-white py-2 px-4 rounded-full hover:bg-[var(--primary)]">
-                    Save
+            <div className="flex flex-col items-center sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <p className='font-inter text-gray-900'><span className='font-fira font-medium text-[var(--secondary)]'>Title:</span> {editedTitle || photo.title}</p>
+                <p className='font-inter text-gray-900'><span className='font-fira font-medium text-[var(--secondary)]'>Photo ID:</span> {photo.id}</p>
+              </div>
+              <div className="mt-3 sm:mt-0 flex  items-center">
+                {isEditing ? (
+                  <div className="flex  items-center">
+                    <input
+                      type="text"
+                      value={editedTitle}
+                      onChange={(e) => setEditedTitle(e.target.value)}
+                      className="border p-2 mr-2"
+                    />
+                    <button onClick={handleTitleEdit} className="bg-[var(--primary)] text-white py-2 px-4 rounded-full hover:bg-[var(--primary)]">
+                      Save
+                    </button>
+                  </div>
+                ) : (
+                  <button onClick={() => setIsEditing(true)} className="bg-[var(--primary)] text-white py-1 px-4 rounded-full hover:bg-[var(--primary)]">
+                    Edit Title
                   </button>
-                </div>
-              ) : (
-                <button onClick={() => setIsEditing(true)} className="bg-[var(--primary)] text-white py-1 px-4 rounded-full hover:bg-[var(--primary)]">
-                  Edit Title
-                </button>
-              )}
-            </div>
-            <p className='font-inter text-gray-900'><span className='font-fira font-medium text-[var(--secondary)]'>Photo ID:</span> {photo.id}</p>
-          </div>
+                )}
+              </div>
+           </div>
+         </div>
+
         </div>
       </div>
   
