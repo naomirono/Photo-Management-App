@@ -25,7 +25,7 @@ const HomePage = () => {
   }, [users, albums, setUsers, setAlbums]);
 
   return (
-    <div className="relative flex justify-center items-center  w-full bg-cover bg-center h-full" style={{ backgroundImage: 'url("https://neyoportfolio.s3.eu-north-1.amazonaws.com/joanna-kosinska-spAkZnUleVw-unsplash.jpg")', position: 'relative' }}>
+    <div className="relative flex justify-center items-center  w-full bg-cover bg-center h-full md:h-screen" style={{ backgroundImage: 'url("https://neyoportfolio.s3.eu-north-1.amazonaws.com/joanna-kosinska-spAkZnUleVw-unsplash.jpg")', position: 'relative' }}>
 
       <div className="absolute inset-0 bg-black bg-opacity-80"></div>
 
