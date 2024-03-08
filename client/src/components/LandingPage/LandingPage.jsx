@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import AppLoader from "../Loader/Loader";
 import { GoogleLogin } from '@react-oauth/google';
 
 const validateEmail = (email) => {
-  return true; 
+  // Add your email validation logic here
+  return true;
 };
 
 const LandingPage = () => {
@@ -17,15 +18,22 @@ const LandingPage = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const storedToken = localStorage.getItem('userToken');
+    if (storedToken) {
+      navigate("/home");
+    }
+  }, [navigate]);
+
   const handleGoogleLoginSuccess = (credentialResponse) => {
+    localStorage.setItem('userToken', credentialResponse.credential);
     navigate("/home");
   };
 
   const handleGoogleLoginError = () => {
+    console.log('Login Failed');
     navigate("/");
   };
-
-
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -43,7 +51,7 @@ const LandingPage = () => {
     setTimeout(() => {
       try {
         console.log("Authentication successful");
-        navigate("/home"); 
+        navigate("/home");
       } catch (err) {
         console.error("Authentication failed:", err);
       } finally {
