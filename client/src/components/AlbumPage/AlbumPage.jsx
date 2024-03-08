@@ -49,7 +49,7 @@ const AlbumPage = () => {
 
   return (
     
-    <div className="relative bg-cover bg-center " style={{ backgroundImage: 'url("https://neyoportfolio.s3.eu-north-1.amazonaws.com/joanna-kosinska-spAkZnUleVw-unsplash.jpg")', position: 'relative' }}>
+    <div className="relative bg-cover bg-center h-full md:h-screen" style={{ backgroundImage: 'url("https://neyoportfolio.s3.eu-north-1.amazonaws.com/joanna-kosinska-spAkZnUleVw-unsplash.jpg")', position: 'relative' }}>
 
     <div className="absolute inset-0 bg-black bg-opacity-80"></div>
 
